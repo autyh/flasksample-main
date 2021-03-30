@@ -10,7 +10,7 @@ class BaseConfig(object):
 class DevelopmentConfig(BaseConfig):
     ENV = 'development'
     # runsever Setting
-    SERVER_IP='127.0.0.1'
+    SERVER_IP='locahost'
     SERVER_PORT=8000
     # Session Setting
     SECRET_KEY = 'your secret key'

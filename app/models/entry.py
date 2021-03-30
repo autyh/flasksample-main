@@ -10,30 +10,30 @@ logger = logging.getLogger(__name__)
 class  Entry(db.Model):
     __tablename__ = 'UT_ENTRYTEMP'
 
-    UENTRYNO = db.Column(db.Integer, primary_key=True)
-    UENTRYDIV = db.Column(db.Integer, nullable=False)
-    UENTRYSOURCEDIV = db.Column(db.Integer, nullable=False)
-    USTATUS = db.Column(db.Integer, nullable=False)
-    UPRIORITY = db.Column(db.Integer, nullable=False)
-    UENTRYDATE  = db.Column(db.DateTime())
-    UENDDATE  = db.Column(db.DateTime())
-    UTHANKYOUMAILEDATE  = db.Column(db.DateTime())
-    UACCOUNTTYPE = db.Column(db.Integer, nullable=False)
-    UNAME = db.Column(db.String(200), nullable=False)
-    UKANA = db.Column(db.String(400), nullable=False)
-    UBIRTHDAY = db.Column(db.DateTime())
-    USEX = db.Column(db.Integer, nullable=False)
-    UEMAIL= db.Column(db.String(300), nullable=False)
-    UPOSSIBLERISKINV = db.Column(db.Integer, nullable=False)
-    UUPDATEDATE= db.Column(db.DateTime())
-    UUPDATECOUNT = db.Column(db.Integer, nullable=False)
+    ENTRYNO = db.Column(db.Integer, primary_key=True)
+    ENTRYDIV = db.Column(db.Integer, nullable=False)
+    ENTRYSOURCEDIV = db.Column(db.Integer, nullable=False)
+    STATUS = db.Column(db.Integer, nullable=False)
+    PRIORITY = db.Column(db.Integer, nullable=False)
+    ENTRYDATE  = db.Column(db.DateTime())
+    ENDDATE  = db.Column(db.DateTime())
+    THANKYOUMAILEDATE  = db.Column(db.DateTime())
+    ACCOUNTTYPE = db.Column(db.Integer, nullable=False)
+    NAME = db.Column(db.String(200), nullable=False)
+    KANA = db.Column(db.String(400), nullable=False)
+    BIRTHDAY = db.Column(db.DateTime())
+    SEX = db.Column(db.Integer, nullable=False)
+    EMAIL= db.Column(db.String(300), nullable=False)
+    POSSIBLERISKINV = db.Column(db.Integer, nullable=False)
+    UPDATEDATE= db.Column(db.DateTime())
+    UPDATECOUNT = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):
         return '<Entry %r>' % self.UENTRYNO
 
     def dict():
-       return {'UENTRYDIV':None, 'UENTRYSOURCEDIV':None, 'UPRIORITY':None, 'UNAME':None, 'UKANA':None, 'UEMAIL':None,
-               'UBIRTHDAY':None, 'UENTRYDATE':None, 'UACCOUNTTYPE':None, 'USTATUS':None, 'UENDDATE':None, 'UTHANKYOUMAILEDATE':None}
+       return {'ENTRYDIV':None, 'ENTRYSOURCEDIV':None, 'PRIORITY':None, 'NAME':None, 'KANA':None, 'EMAIL':None,
+               'BIRTHDAY':None, 'ENTRYDATE':None, 'ACCOUNTTYPE':None, 'STATUS':None, 'ENDDATE':None, 'THANKYOUMAILEDATE':None}
 
     def select_all():
 
@@ -53,9 +53,9 @@ class  Entry(db.Model):
 
         if int(status) > 0:
             # select * from entrys
-            entry_list = db.session.query(Entry).filter(Entry.USTATUS == int(status), Entry.UENTRYDIV == 5).all()
+            entry_list = db.session.query(Entry).filter(Entry.STATUS == int(status), Entry.UENTRYDIV == 5).all()
         else:
-            entry_list = db.session.query(Entry).filter(Entry.UENTRYDIV == 5).all()
+            entry_list = db.session.query(Entry).filter(Entry.ENTRYDIV == 5).all()
 
 
         if entry_list == None:
@@ -75,7 +75,7 @@ class  Entry(db.Model):
 
             now_date = datetime.now()
             #birthday_date = now_date - relativedelta.relativedelta(years=20)
-            sql = "Select USEQ_ENTRYNO.NEXTVAL from dual"
+            sql = "Select SEQ_ENTRYNO.NEXTVAL from dual"
             res = db.session.execute(sql)
 
             for r in res:
@@ -84,23 +84,23 @@ class  Entry(db.Model):
             logger.debug("--- Entry insert get seqno ---")
 
             record = Entry(
-                UENTRYNO = seqno,
-                UENTRYDIV = 5,
-                UENTRYSOURCEDIV = 1,
-                USTATUS = 1,
-                UPRIORITY = 1,
-                UENTRYDATE = now_date,
-                UENDDATE = now_date,
-                UTHANKYOUMAILEDATE = now_date,
-                UACCOUNTTYPE = 1,
-                UNAME = entry['UNAME'],
-                UKANA = '',
-                UBIRTHDAY = now_date,
-                USEX = 0,
-                UEMAIL = entry['UEMAIL'],
-                UPOSSIBLERISKINV = 1,
-                UUPDATEDATE = now_date,
-                UUPDATECOUNT = 0,
+                ENTRYNO = seqno,
+                ENTRYDIV = 5,
+                ENTRYSOURCEDIV = 1,
+                STATUS = 1,
+                PRIORITY = 1,
+                ENTRYDATE = now_date,
+                ENDDATE = now_date,
+                THANKYOUMAILEDATE = now_date,
+                ACCOUNTTYPE = 1,
+                NAME = entry['UNAME'],
+                KANA = '',
+                BIRTHDAY = now_date,
+                SEX = 0,
+                EMAIL = entry['UEMAIL'],
+                POSSIBLERISKINV = 1,
+                UPDATEDATE = now_date,
+                UPDATECOUNT = 0,
                 )
 
             logger.debug("--- Entry insert add record ---")
@@ -122,7 +122,7 @@ class  Entry(db.Model):
         logger.debug("--- Entry select_id start ---")
 
         try:
-            entry = db.session.query(Entry).filter(Entry.UENTRYNO==id).first()
+            entry = db.session.query(Entry).filter(Entry.ENTRYNO==id).first()
         except Exception as e:
             tb = sys.exc_info()[2]
             logger.error("--- Entry select_id exception message:{0}".format(e.with_traceback(tb)))
@@ -137,46 +137,46 @@ class  Entry(db.Model):
 
         try:
 
-            update_entry = db.session.query(Entry).filter(Entry.UENTRYNO==entry['UENTRYNO']).first()
+            update_entry = db.session.query(Entry).filter(Entry.ENTRYNO==entry['ENTRYNO']).first()
 
-            if entry['UENTRYDIV'] != None:
-                update_entry.UENTRYDIV =  entry['UENTRYDIV']
+            if entry['ENTRYDIV'] != None:
+                update_entry.ENTRYDIV =  entry['ENTRYDIV']
 
-            if entry['UENTRYSOURCEDIV'] != None:
-                update_entry.UENTRYSOURCEDIV =  entry['UENTRYSOURCEDIV']
+            if entry['ENTRYSOURCEDIV'] != None:
+                update_entry.UENTRYSOURCEDIV =  entry['ENTRYSOURCEDIV']
 
-            if entry['USTATUS'] != None:
-                update_entry.USTATUS = entry['USTATUS']
+            if entry['STATUS'] != None:
+                update_entry.USTATUS = entry['STATUS']
 
-            if entry['UPRIORITY'] != None:
-                update_entry.USTATUS = entry['UPRIORITY']
+            if entry['PRIORITY'] != None:
+                update_entry.USTATUS = entry['PRIORITY']
 
-            if entry['UENTRYDATE'] != None:
-                update_entry.UENTRYDATE = entry['UENTRYDATE']
+            if entry['ENTRYDATE'] != None:
+                update_entry.UENTRYDATE = entry['ENTRYDATE']
 
-            if entry['UENDDATE'] != None:
-                update_entry.UENDDATE = entry['UENDDATE']
+            if entry['ENDDATE'] != None:
+                update_entry.UENDDATE = entry['ENDDATE']
 
-            if entry['UTHANKYOUMAILEDATE'] != None:
-                update_entry.UTHANKYOUMAILEDATE = entry['UTHANKYOUMAILEDATE']
+            if entry['THANKYOUMAILEDATE'] != None:
+                update_entry.UTHANKYOUMAILEDATE = entry['THANKYOUMAILEDATE']
 
-            if entry['UACCOUNTTYPE'] != None:
-                update_entry.UACCOUNTTYPE = entry['UACCOUNTTYPE']
+            if entry['ACCOUNTTYPE'] != None:
+                update_entry.UACCOUNTTYPE = entry['ACCOUNTTYPE']
 
-            if entry['UNAME'] != None:
-                update_entry.UNAME = entry['UNAME']
+            if entry['NAME'] != None:
+                update_entry.UNAME = entry['NAME']
 
-            if entry['UKANA'] != None:
-                update_entry.UKANA = entry['UKANA']
+            if entry['KANA'] != None:
+                update_entry.UKANA = entry['KANA']
 
-            if entry['UBIRTHDAY'] != None:
-                update_entry.UBIRTHDAY = entry['UBIRTHDAY']
+            if entry['BIRTHDAY'] != None:
+                update_entry.UBIRTHDAY = entry['BIRTHDAY']
 
-            if entry['USEX'] != None:
-                update_entry.USEX = entry['USEX']
+            if entry['SEX'] != None:
+                update_entry.USEX = entry['SEX']
 
-            if entry['UEMAIL'] != None:
-                update_entry.UEMAIL = entry['UEMAIL']
+            if entry['EMAIL'] != None:
+                update_entry.UEMAIL = entry['EMAIL']
 
             update_entry.UUPDATEDATE = datetime.now()
 
@@ -200,7 +200,7 @@ class  Entry(db.Model):
         result = False
 
         try:
-            delete_entry = db.session.query(Entry).filter(Entry.UENTRYNO==id).first()
+            delete_entry = db.session.query(Entry).filter(Entry.ENTRYNO==id).first()
 
             logger.debug("--- Entry delete delete record ---")
             # insert into entrys(name, address, tel, mail) values(...)

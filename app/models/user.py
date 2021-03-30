@@ -8,34 +8,34 @@ logger = logging.getLogger(__name__)
 
 class User(db.Model):
     __bind_key__ = 'mysql_bind'
-    __tablename__ = 'UET_ENTRY'
+    __tablename__ = 'ET_ENTRY'
 
-    UENTRYNO = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    UENTRYDIV = db.Column(db.Integer, nullable=False)
-    UENTRYSOURCEDIV= db.Column(db.Integer, nullable=True)
-    USTATUS = db.Column(db.Integer, nullable=False)
-    UENTRYDATE = db.Column(db.Date(), nullable=True)
-    UENDDATE = db.Column(db.Date(), nullable=True)
-    UTHANKYOUMAILEDATE = db.Column(db.Date(), nullable=True)
-    UNOTICECANCELDATE = db.Column(db.Date(), nullable=True)
-    UACCOUNTDELDATE = db.Column(db.Date, nullable=True)
-    UACCOUNTTYPE = db.Column(db.Integer, nullable=True)
-    UNAME = db.Column(db.String(200), nullable=False)
-    UKANA = db.Column(db.String(400), nullable=False)
-    UBIRTHDAY = db.Column(db.Date, nullable=True)
-    USEX= db.Column(db.Integer, nullable=True)
-    UTELHOME = db.Column(db.String(15), nullable=False)
-    UEMAIL = db.Column(db.String(300), nullable=False)
-    UUPDATEDATE = db.Column(db.DateTime, nullable=True)
-    UOPERATOR= db.Column(db.Integer, nullable=True)
+    ENTRYNO = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    ENTRYDIV = db.Column(db.Integer, nullable=False)
+    ENTRYSOURCEDIV= db.Column(db.Integer, nullable=True)
+    STATUS = db.Column(db.Integer, nullable=False)
+    ENTRYDATE = db.Column(db.Date(), nullable=True)
+    ENDDATE = db.Column(db.Date(), nullable=True)
+    THANKYOUMAILEDATE = db.Column(db.Date(), nullable=True)
+    NOTICECANCELDATE = db.Column(db.Date(), nullable=True)
+    ACCOUNTDELDATE = db.Column(db.Date, nullable=True)
+    ACCOUNTTYPE = db.Column(db.Integer, nullable=True)
+    NAME = db.Column(db.String(200), nullable=False)
+    KANA = db.Column(db.String(400), nullable=False)
+    BIRTHDAY = db.Column(db.Date, nullable=True)
+    SEX= db.Column(db.Integer, nullable=True)
+    TELHOME = db.Column(db.String(15), nullable=False)
+    EMAIL = db.Column(db.String(300), nullable=False)
+    UPDATEDATE = db.Column(db.DateTime, nullable=True)
+    OPERATOR= db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return '<User %r>' % self.UENTRYNO
+        return '<User %r>' % self.ENTRYNO
 
     def dict():
-        return {'UENTRYNO':None, 'UENTRYDIV':None, 'UENTRYSOURCEDIV':None, 'USTATUS':None, 'UENTRYDATE':None, 'UENDDATE':None,'UTHANKYOUMAILEDATE':None,
-                'UNOTICECANCELDATE':None, 'UACCOUNTDELDATE':None, 'UACCOUNTTYPE':None, 'UNAME':None, 'UKANA':None,  'UBIRTHDAY':None,
-                'USEX':None, 'UTELHOME':None, 'UEMAIL':None, 'UUPDATEDATE':None }
+        return {'ENTRYNO':None, 'ENTRYDIV':None, 'ENTRYSOURCEDIV':None, 'STATUS':None, 'ENTRYDATE':None, 'ENDDATE':None,'THANKYOUMAILEDATE':None,
+                'NOTICECANCELDATE':None, 'ACCOUNTDELDATE':None, 'ACCOUNTTYPE':None, 'NAME':None, 'KANA':None,  'BIRTHDAY':None,
+                'SEX':None, 'TELHOME':None, 'EMAIL':None, 'UPDATEDATE':None }
 
 
     def select_all():
@@ -57,7 +57,7 @@ class User(db.Model):
         logger.debug("--- User select_status start ---")
 
         try:
-            user_list =  db.session.query(User).filter(User.USTATUS == status).all()
+            user_list =  db.session.query(User).filter(User.STATUS == status).all()
         except Exception as e:
             tb = sys.exc_info()[2]
             logger.error("--- User select_status exception message:{0}".format(e.with_traceback(tb)))
@@ -73,22 +73,22 @@ class User(db.Model):
 
         try:
             record = User(
-                UENTRYDIV = 5,
-                UENTRYSOURCEDIV = 1,
-                USTATUS = 1,
-                UENTRYDATE = datetime.now(),
-                UENDDATE = user['UENTRYDATE'],
-                UTHANKYOUMAILEDATE = user['UTHANKYOUMAILEDATE'],
-                UNOTICECANCELDATE = user['UNOTICECANCELDATE'],
-                UACCOUNTDELDATE = user['UACCOUNTDELDATE'],
-                UACCOUNTTYPE = 0,
-                UNAME = user['UNAME'],
-                UKANA = user['UKANA'],
-                UBIRTHDAY = user['UBIRTHDAY'],
-                USEX = 0,
-                UTELHOME = "",
-                UEMAIL = user['UEMAIL'],
-                UUPDATEDATE = datetime.now(),
+                ENTRYDIV = 5,
+                ENTRYSOURCEDIV = 1,
+                STATUS = 1,
+                ENTRYDATE = datetime.now(),
+                ENDDATE = user['UENTRYDATE'],
+                THANKYOUMAILEDATE = user['UTHANKYOUMAILEDATE'],
+                NOTICECANCELDATE = user['UNOTICECANCELDATE'],
+                ACCOUNTDELDATE = user['UACCOUNTDELDATE'],
+                ACCOUNTTYPE = 0,
+                NAME = user['UNAME'],
+                KANA = user['UKANA'],
+                BIRTHDAY = user['UBIRTHDAY'],
+                SEX = 0,
+                TELHOME = "",
+                EMAIL = user['UEMAIL'],
+                UPDATEDATE = datetime.now(),
             )
 
             logger.debug("--- User insert add record ---")
@@ -109,7 +109,7 @@ class User(db.Model):
         logger.debug("--- User select_id start ---")
 
         try:
-            user = db.session.query(User).filter(User.UENTRYNO==id).first()
+            user = db.session.query(User).filter(User.ENTRYNO==id).first()
         except Exception as e:
             tb = sys.exc_info()[2]
             logger.error("--- User select_id exception message:{0}".format(e.with_traceback(tb)))
@@ -125,57 +125,57 @@ class User(db.Model):
 
         try:
 
-            update_user = db.session.query(User).filter(User.UENTRYNO==user['UENTRYNO']).first()
+            update_user = db.session.query(User).filter(User.ENTRYNO==user['ENTRYNO']).first()
 
-            if user['UENTRYDIV'] != None:
-                update_user.UENTRYDIV =  user['UENTRYDIV']
+            if user['ENTRYDIV'] != None:
+                update_user.UENTRYDIV =  user['ENTRYDIV']
 
-            if user['UENTRYSOURCEDIV'] != None:
-                update_user.UENTRYSOURCEDIV =  user['UENTRYSOURCEDIV']
+            if user['ENTRYSOURCEDIV'] != None:
+                update_user.UENTRYSOURCEDIV =  user['ENTRYSOURCEDIV']
 
-            if user['UENTRYSOURCEDIV'] != None:
-                update_user.UENTRYSOURCEDIV = user['UENTRYSOURCEDIV']
+            if user['ENTRYSOURCEDIV'] != None:
+                update_user.UENTRYSOURCEDIV = user['ENTRYSOURCEDIV']
 
-            if user['UENTRYDATE'] != None:
-                update_user.UENTRYDATE = user['UENTRYDATE']
+            if user['ENTRYDATE'] != None:
+                update_user.UENTRYDATE = user['ENTRYDATE']
 
-            if user['UENDDATE'] != None:
-                update_user.UENDDATE = user['UENDDATE']
+            if user['ENDDATE'] != None:
+                update_user.UENDDATE = user['ENDDATE']
 
-            if user['UTHANKYOUMAILEDATE'] != None:
-                update_user.UTHANKYOUMAILEDATE = user['UTHANKYOUMAILEDATE']
+            if user['THANKYOUMAILEDATE'] != None:
+                update_user.UTHANKYOUMAILEDATE = user['THANKYOUMAILEDATE']
 
-            if user['UNOTICECANCELDATE'] != None:
-                update_user.UNOTICECANCELDATE = user['UNOTICECANCELDATE']
+            if user['NOTICECANCELDATE'] != None:
+                update_user.UNOTICECANCELDATE = user['NOTICECANCELDATE']
 
-            if user['UACCOUNTDELDATE'] != None:
-                update_user.UACCOUNTDELDATE = user['UACCOUNTDELDATE']
+            if user['ACCOUNTDELDATE'] != None:
+                update_user.UACCOUNTDELDATE = user['ACCOUNTDELDATE']
 
-            if user['UACCOUNTTYPE'] != None:
-                update_user.UACCOUNTTYPE = user['UACCOUNTTYPE']
+            if user['ACCOUNTTYPE'] != None:
+                update_user.UACCOUNTTYPE = user['ACCOUNTTYPE']
 
-            if user['UNAME'] != None:
-                update_user.UNAME = user['UNAME']
+            if user['NAME'] != None:
+                update_user.UNAME = user['NAME']
 
-            if user['UKANA'] != None:
-                update_user.UKANA = user['UKANA']
+            if user['KANA'] != None:
+                update_user.UKANA = user['KANA']
 
-            if user['UBIRTHDAY'] != None:
-                update_user.UBIRTHDAY = user['UBIRTHDAY']
+            if user['BIRTHDAY'] != None:
+                update_user.UBIRTHDAY = user['BIRTHDAY']
 
-            if user['USEX'] != None:
-                update_user.USEX = user['USEX']
+            if user['SEX'] != None:
+                update_user.USEX = user['SEX']
 
-            if user['UTELHOME'] != None:
-                update_user.UTELHOME = user['UTELHOME']
+            if user['TELHOME'] != None:
+                update_user.UTELHOME = user['TELHOME']
 
-            if user['UEMAIL'] != None:
-                update_user.UEMAIL = user['UEMAIL']
+            if user['EMAIL'] != None:
+                update_user.UEMAIL = user['EMAIL']
 
-            if user['USTATUS'] != None:
-                update_user.USTATUS = user['USTATUS']
+            if user['STATUS'] != None:
+                update_user.USTATUS = user['STATUS']
 
-            update_user.UUPDATEDATE = datetime.now()
+            update_user.UPDATEDATE = datetime.now()
 
             logger.debug("--- User update update_user ---")
             # insert into users(name, address, tel, mail) values(...)
@@ -197,7 +197,7 @@ class User(db.Model):
         result = False
 
         try:
-            delete_user = db.session.query(User).filter(User.UENTRYNO==id).first()
+            delete_user = db.session.query(User).filter(User.ENTRYNO==id).first()
 
             logger.debug("--- User delete delete record ---")
             # insert into users(name, address, tel, mail) values(...)

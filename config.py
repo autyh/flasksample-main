@@ -10,8 +10,14 @@ class BaseConfig(object):
 class DevelopmentConfig(BaseConfig):
     host = socket.gethostname()
     localhost = socket.gethostbyname(host)
-
     ENV = 'development'
+
+    # SMTP Setting
+    #MAIL_SERVER = ''
+    #MAIL_PORT =
+    #MAIL_USE_SSL = False
+    #MAIL_USERNAME = ""
+    #MAIL_PASSWORD = ""
     # runsever Setting
     SERVER_IP=localhost
     SERVER_PORT=8000

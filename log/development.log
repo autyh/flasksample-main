@@ -271,3 +271,83 @@
 2021-03-30 13:27:09,209 - app.views.error - INFO - not_found_error ocuured
 2021-03-30 13:44:18,538 - app.views.index - DEBUG - start login POST
 2021-03-30 13:44:19,718 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:46:19,076 - app.views.index - DEBUG - start login POST
+2021-03-30 17:46:20,132 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:46:33,927 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:46:37,522 - app.views.sample - DEBUG - start mail_index
+2021-03-30 17:46:37,523 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 17:46:37,654 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:46:37,881 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:51:46,885 - app.views.sample - DEBUG - start mail_index
+2021-03-30 17:51:46,891 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 17:51:53,093 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:52:41,436 - app.views.sample - DEBUG - start mail_index
+2021-03-30 17:52:41,439 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 17:52:41,653 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:52:42,174 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:52:49,333 - app.views.sample - DEBUG - start mail_index
+2021-03-30 17:52:49,337 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 17:52:49,475 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:52:49,689 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 17:53:04,997 - app.views.sample - DEBUG - start mail_index
+2021-03-30 17:53:05,000 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 18:27:23,275 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:27:26,709 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:27:26,713 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 18:27:26,863 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:27:27,126 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:27:39,557 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:27:39,567 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 18:27:45,719 - app.func.mail - DEBUG - timed out
+2021-03-30 18:27:45,739 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:27:45,741 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 18:27:45,932 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:27:46,783 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:29:27,004 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:29:27,009 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 18:29:27,266 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:29:28,005 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:29:38,383 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:29:38,390 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 18:29:44,240 - app.func.mail - DEBUG - timed out
+2021-03-30 18:29:44,253 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:29:44,254 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 18:29:44,460 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:29:45,205 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:42:36,071 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:42:36,074 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 18:42:36,348 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:42:37,071 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:42:48,853 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:42:48,861 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 18:43:10,213 - app.func.mail - DEBUG - [WinError 10060] 接続済みの呼び出し先が一定の時間を過ぎても正しく応答しなかったため、接続できませんでした。または接続済みのホストが応答しなかったため、確立された接続は失敗しました。
+2021-03-30 18:43:10,240 - app.views.sample - DEBUG - start mail_index
+2021-03-30 18:43:10,242 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 18:43:10,442 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 18:43:11,082 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 19:55:14,640 - app.views.sample - DEBUG - start mail_index
+2021-03-30 19:55:14,643 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 19:55:14,908 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 19:55:15,520 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 19:55:22,354 - app.views.sample - DEBUG - start mail_index
+2021-03-30 19:55:22,361 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 19:55:27,825 - app.func.mail - DEBUG - timed out
+2021-03-30 19:55:27,841 - app.views.sample - DEBUG - start mail_index
+2021-03-30 19:55:27,850 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 19:55:28,098 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 19:55:28,827 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:08:49,898 - app.views.sample - DEBUG - start mail_index
+2021-03-30 20:08:49,901 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 20:08:50,251 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:08:51,127 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:09:07,085 - app.views.sample - DEBUG - start mail_index
+2021-03-30 20:09:07,092 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 20:09:07,137 - app.func.mail - ERROR - --- User update exception message:'MAIL_SERVER'
+2021-03-30 20:09:07,306 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:09:07,599 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:09:30,217 - app.views.sample - DEBUG - start mail_index
+2021-03-30 20:09:30,219 - app.views.sample - DEBUG - start mail_index POST
+2021-03-30 20:09:30,229 - app.func.mail - ERROR - --- User update exception message:'MAIL_SERVER'
+2021-03-30 20:09:30,410 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:09:30,998 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:09:38,398 - app.views.error - INFO - not_found_error ocuured

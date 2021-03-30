@@ -10,14 +10,6 @@ from flask_mail import Message
 
 logger = logging.getLogger(__name__)
 
-"""
-    import smtpd
-    import asyncore
-
-    smtpd.DebuggingServer(('127.0.0.1', 25), None)
-    asyncore.loop()
-"""
-
 def send_mail(template, rcptcmd=None):
 
     try:
@@ -25,9 +17,9 @@ def send_mail(template, rcptcmd=None):
         message = template.splitlines()
 
         logger.debug('!!!!!! current_app.config[MAIL_SERVER]:' + current_app.config['MAIL_SERVER'])
-        #logger.debug('!!!!!! current_app.config[MAIL_PORT]:' + str(current_app.config['MAIL_PORT']))
+        logger.debug('!!!!!! current_app.config[MAIL_PORT]:' + str(current_app.config['MAIL_PORT']))
         logger.debug('!!!!!! current_app.config[MAIL_USERNAME]:' + current_app.config['MAIL_USERNAME'])
-        #logger.debug('!!!!!! current_app.config[MAIL_PORT]:' + str(current_app.config['MAIL_PASSWORD']))
+        logger.debug('!!!!!! current_app.config[MAIL_PORT]:' + str(current_app.config['MAIL_PASSWORD']))
 
         subject = message[0].replace('subject:','')
         mail_from =  message[1].replace('from:','')
@@ -77,11 +69,11 @@ def mail_check(template, mail_address):
         return status
 
     # メールアドレス存在チェック
-
 """
     local_host = socket.gethostname()
 
-    server = smtplib.SMTP(host=current_app.config['MAIL_SERVER'], port=current_app.config['MAIL_PORT'], timeout=5)
+    #server = smtplib.SMTP(host=current_app.config['MAIL_SERVER'], port=current_app.config['MAIL_PORT'], timeout=5)
+    server = smtplib.SMTP(timeout=5)
     server.set_debuglevel(0)
 
     try:
@@ -96,31 +88,6 @@ def mail_check(template, mail_address):
             return status
         else:
             logger.debug('Address does not exists')
-            status = 3
-            return status
-
-    except Exception as e:
-        logger.debug(e)
-        status = 4
-        return status
-"""
-"""
-    result = send_mail(template, "TO")
-    if result :
-        status = 0
-    else :
-        status = 3
-
-    return status
-"""
-"""
-    server = smtplib.SMTP(timeout=5)
-    try :
-        code = server.rcpt(mail_address)
-        if code == 250 :
-            status = 0
-            return status
-        else :
             status = 3
             return status
 

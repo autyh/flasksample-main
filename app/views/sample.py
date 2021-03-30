@@ -3,6 +3,7 @@ from flask import request, redirect, g, url_for, render_template, flash, session
 from flask_wtf import csrf #セキュリティチェックの為必ず必要
 from flask_paginate import Pagination, get_page_parameter #ページネーションを行う場合は必要
 from app.func.mail import send_mail #メールを送信する場合は必要
+from app.func.mail import mail_check #メールのバリデーションチェック
 from app.models import Entry, User #モデルを利用する場合は必要
 from app.validations.sample.oracle import OracleIndexForm, OracleCreateForm, OracleUpdateForm, OracleDeleteForm
 from app.validations.sample.mysql import MySqlCreateForm, MySqlUpdateForm,MySqlDeleteForm, MySqlIndexForm
@@ -358,10 +359,28 @@ def mail_index():
         else:
             flash("送信できませんでした。","danger")
 
-        return redirect(MAIL_PATH)
-
     return render_template(MAIL_PATH + 'index.html',form=form)
 
+"""
+        status = mail_check(template, to)
+        if status == 0:
+            if send_mail(template):
+                flash("送信できました。","success")
+            else:
+                flash("送信できませんでした。","danger")
+        if status == 1:
+            flash('メールアドレスの構文が間違っています。', 'danger')
+            return render_template(MAIL_PATH + 'index.html', form=form)
+        if status == 2:
+            flash('ドメインが間違っています。', 'danger')
+            return render_template(MAIL_PATH + 'index.html', form=form)
+        if status == 3:
+            flash('入力していただいたメールアドレスは存在しません。', 'danger')
+            return render_template(MAIL_PATH + 'index.html', form=form)
+        else :
+            flash('エラーです。', 'danger')
+            return redirect(MAIL_PATH)
+"""
 
 @app.route('/web/', methods = ['GET','POST'])
 def web_index():

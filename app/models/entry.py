@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class  Entry(db.Model):
-    __tablename__ = 'UT_ENTRYTEMP'
+    __tablename__ = 'T_ENTRYTEMP'
 
     ENTRYNO = db.Column(db.Integer, primary_key=True)
     ENTRYDIV = db.Column(db.Integer, nullable=False)

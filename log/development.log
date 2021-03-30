@@ -351,3 +351,11 @@
 2021-03-30 20:09:30,410 - app.views.error - INFO - not_found_error ocuured
 2021-03-30 20:09:30,998 - app.views.error - INFO - not_found_error ocuured
 2021-03-30 20:09:38,398 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:19:06,075 - app.views.index - DEBUG - start login POST
+2021-03-30 20:19:07,040 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:24:04,307 - app.views.sample - DEBUG - start mail_index
+2021-03-30 20:24:04,310 - app.views.sample - DEBUG - start mail_index GET
+2021-03-30 20:24:04,656 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:24:05,507 - app.views.error - INFO - not_found_error ocuured
+2021-03-30 20:25:25,734 - app.views.index - DEBUG - start login POST
+2021-03-30 20:25:26,660 - app.views.error - INFO - not_found_error ocuured

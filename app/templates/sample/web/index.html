@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <form class="card" action="/sample/web/" method="post">
+      {{ form.csrf_token }}
+      {% if 'csrf_token' in form %}
+        {% if form.csrf_token.errors %}
+          <div class="warning">You have submitted an invalid CSRF token</div>
+        {% endif %}
+      {% endif %}
+      <div class="card-header text-center">
+        <h2>ログインAPIテスト</h2>
+        <p>担当者コードとパスワードを記入してください</p>
+        {% if form.errors %}
+            <ul class="list-group">
+                {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                    {% for error in field_errors %}
+                        <li class="list-group-item list-group-item-danger">{{ form[field_name].label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+      </div>
+      <table class="table">
+        <caption>ログイン</caption>
+        <tr>
+          <th>ログイン</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>{{ form.staffcd.label }}</td>
+          <td>{{ form.staffcd }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+        <tr>
+          <td>
+        <input type="submit" class="btn btn-primary mb-3" value="ログイン">
+        <a href="/sample/" class="btn btn-secondary mb-3">戻る</a>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+{% endblock %}

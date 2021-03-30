@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <form class="card" action="/sample/mysql/delete/{{user.UENTRYNO}}" method="post">
+      {{ form.csrf_token }}
+      {% if 'csrf_token' in form %}
+        {% if form.csrf_token.errors %}
+          <div class="alert alert-danger">You have submitted an invalid CSRF token</div>
+        {% endif %}
+      {% endif %}
+      <div class="card-header text-center">
+        <h2>登録データ削除フォーム</h2>
+        <p>ニックネームとメールアドレスを確認してください。</p>
+        {% if form.errors %}
+            <ul class="list-group">
+                {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                    {% for error in field_errors %}
+                        <li class="list-group-item list-group-item-danger">{{ form[field_name].label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+      </div>
+      <table class="table">
+        <caption>ユーザ削除</caption>
+        <tr>
+          <th>ユーザ削除</th>
+          <th></th>
+        </tr>
+        <tr>
+          <td>{{ form.username.label }}</td>
+          <td>{{ form.username(disabled=True) }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.userkana.label }}</td>
+          <td>{{ form.userkana(disabled=True) }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.email.label }}</td>
+          <td>{{ form.email(disabled=True) }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.sex.label }}</td>
+          <td>
+            {% for subfield in form.sex %}
+                {{ subfield(disabled=True) }}：{{ subfield.label }}
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <td>{{ form.status.label }}</td>
+          <td>{{ form.status(disabled=True) }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.confirm.label }}</td>
+          <td>{{ form.confirm }}</td>
+        </tr>
+        <tr>
+          <td>
+        	<input type="submit" class="btn btn-primary mb-3" value="削除">
+        	<a href="/sample/mysql/" class="btn btn-secondary mb-3">戻る</a
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <form class="card" action="/sample/mysql/create" method="post">
+      {{ form.csrf_token }}
+      {% if 'csrf_token' in form %}
+        {% if form.csrf_token.errors %}
+          <div class="alert alert-danger">You have submitted an invalid CSRF token</div>
+        {% endif %}
+      {% endif %}
+      <div class="card-header text-center">
+        <h2>新規登録フォーム</h2>
+        <p>ニックネームとメールアドレスを登録してください。</p>
+        {% if form.errors %}
+            <ul class="list-group">
+                {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+                    {% for error in field_errors %}
+                        <li class="list-group-item list-group-item-danger">{{ form[field_name].label }}: {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+      </div>
+      <table class="table">
+        <caption>ユーザ登録</caption>
+        <tr>
+          <th>ユーザ登録</th>
+          <th>{{ form.entryno }}</th>
+        </tr>
+        <tr>
+          <td>{{ form.username.label }}</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.email.label }}</td>
+          <td>{{ form.email(placeholder="name@example.com") }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.confirm.label }}</td>
+          <td>{{ form.confirm }}</td>
+        </tr>
+        <tr>
+          <td>
+            　<input type="submit" class="btn btn-primary mb-3" value="登録">
+              <a href="/sample/mysql/" class="btn btn-secondary mb-3">戻る</a>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+{% endblock %}

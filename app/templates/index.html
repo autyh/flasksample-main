@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <form class="card" action="/top/" method="post">
+      {{ form.csrf_token }}
+      {% if 'csrf_token' in form %}
+        {% if form.csrf_token.errors %}
+          <div class="warning">You have submitted an invalid CSRF token</div>
+        {% endif %}
+      {% endif %}
+      {% if form.errors %}
+        <ul class="list-group">
+          {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+              <li class="list-group-item list-group-item-danger">{{ error }}</li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="card-header text-center">
+        <h2>ログイン</h2>
+      </div>
+      <table class="table">
+        <tr>
+          <td>{{ form.staffcd.label }}</td>
+          <td>{{ form.staffcd }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+      </table>
+      <div class="card-footer text-center">
+        <input type="submit" class="btn btn-primary mb-3" value="ログイン">
+      </div>
+    </form>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
+{% endblock %}
